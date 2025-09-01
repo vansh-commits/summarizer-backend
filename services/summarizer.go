@@ -50,7 +50,21 @@ func Summarizer(text string) (string, error) {
 				Parts: []struct {
 					Text string `json:"text"`
 				}{
-					{Text: "Summarize the following text:\n\n" + text},
+					{Text: `You are a helpful summarizer.
+
+Summarize the following text in **two formats**:
+
+1. **Paragraph Summary**  
+   - A concise paragraph (4–6 sentences) that captures the main ideas.
+
+2. **Bulleted Summary**  
+   - A clear, structured list of key points.  
+   - Use 5–7 bullet points, each short and impactful.
+
+Text to summarize:
+""" 
+` + text + `
+"""`},
 				},
 			},
 		},
